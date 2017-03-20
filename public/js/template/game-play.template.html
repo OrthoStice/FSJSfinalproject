@@ -1,0 +1,20 @@
+<h1>Welcome to the <em>END GAME</em></h1>
+
+<ul>
+    <li
+            ng-repeat="game in $ctrl.games"
+            ng-click="$ctrl.selectGame(game)"
+            ng-class="{selected: game._id === $ctrl.selectedGame._id}">
+        <a href="#!/game/{{game._id}}">{{game.title}}</a>
+    </li>
+</ul>
+
+<button ng-click="$ctrl.editTurn()">Save Turn</button>
+
+<edit-game
+        ng-show="$ctrl.selectedGame"
+        file="$ctrl.selectedGame"
+        on-create="$ctrl.onCreate(file)"
+        on-update="$ctrl.onUpdate(file)"
+        on-delete="$ctrl.onDelete(file)"
+></edit-game>
